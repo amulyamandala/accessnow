@@ -1,0 +1,391 @@
+body {
+    width: 500px;
+    min-height: 600px;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: black;
+}
+
+#container {
+    padding: 16px;
+}
+
+/* ===== ACCESSIBILITY SETTINGS SECTION ===== */
+#settingsPanel {
+    background-color: #f0f0f0;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    border: 2px solid #ddd;
+}
+
+#settingsPanel h3 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+#settingsPanel label {
+    font-size: 12px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+#themeSelect,
+#fontSizeSlider,
+#letterSpacing,
+#lineHeight {
+    width: 100%;
+    padding: 8px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+}
+
+#applyAccessibilityBtn {
+    width: 100%;
+    padding: 10px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+#applyAccessibilityBtn:hover {
+    background-color: #1557b0;
+}
+
+/* ===== MODE TOGGLE ===== */
+#mode-toggle {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 12px;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.mode-btn.active {
+    background-color: #1a73e8;
+    color: white;
+    border-color: #1a73e8;
+}
+
+.mode-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.mode-btn.active:hover {
+    background-color: #1557b0;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.action-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+}
+
+#analyzeBtn {
+    background-color: #34a853;
+    color: white;
+}
+
+#analyzeBtn:hover:not(:disabled) {
+    background-color: #2d8e47;
+    transform: scale(1.02);
+}
+
+#analyzeBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.action-btn.secondary {
+    background-color: #1a73e8;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.action-btn.secondary:hover:not(:disabled) {
+    background-color: #1557b0;
+}
+
+.action-btn.secondary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ===== READ ALOUD BUTTONS (SUMMARY & SIMPLIFIED) ===== */
+.read-aloud-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 4px;
+    border: 1px solid #1a73e8;
+    background-color: #ffffff;
+    color: #1a73e8;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.read-aloud-btn:hover {
+    background-color: #1a73e8;
+    color: #ffffff;
+}
+
+body.visual-mode .read-aloud-btn {
+    font-size: 15px;
+    padding: 10px 14px;
+}
+
+body.dark-mode .read-aloud-btn {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    border-color: #1a73e8;
+}
+
+body.dark-mode .read-aloud-btn:hover {
+    background-color: #1a73e8;
+    color: #ffffff;
+}
+
+/* ===== RESULTS SECTIONS ===== */
+.hidden {
+    display: none !important;
+}
+
+#results {
+    margin-top: 16px;
+}
+
+#summarySection,
+#simplifiedSection {
+    margin-bottom: 20px;
+    padding: 12px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+}
+
+h2 {
+    margin: 0 0 12px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+h3 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+#summaryContent,
+#simplifiedContent,
+#answerContent {
+    line-height: 1.6;
+    font-size: 14px;
+    color: #333;
+}
+
+/* ===== Q&A SECTION ===== */
+#qaSection {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #f0f7ff;
+    border: 1px solid #c5d9ed;
+    border-radius: 6px;
+}
+
+#questionInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+#questionInput:focus {
+    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 5px rgba(26, 115, 232, 0.5);
+}
+
+#answerContent {
+    margin-top: 12px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 4px;
+    min-height: 40px;
+}
+
+/* ===== VISUAL MODE STYLES ===== */
+body.visual-mode {
+    font-size: 18px;
+}
+
+body.visual-mode .action-btn {
+    padding: 20px;
+    font-size: 20px;
+    min-height: 48px;
+}
+
+body.visual-mode .mode-btn {
+    padding: 14px;
+    font-size: 18px;
+}
+
+body.visual-mode h2 {
+    font-size: 24px;
+}
+
+body.visual-mode h3 {
+    font-size: 20px;
+}
+
+body.visual-mode #summaryContent,
+body.visual-mode #simplifiedContent,
+body.visual-mode #answerContent {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+body.visual-mode #summarySection,
+body.visual-mode #simplifiedSection {
+    background-color: white;
+    border: 3px solid black;
+}
+
+body.visual-mode #questionInput {
+    font-size: 18px;
+    padding: 14px;
+    border: 2px solid black;
+}
+
+/* ===== READING MODE STYLES ===== */
+body.reading-mode .bullet-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 0;
+}
+
+body.reading-mode .bullet-list li {
+    margin-bottom: 8px;
+}
+
+/* ===== ACCESSIBILITY HIGH CONTRAST ===== */
+body.high-contrast {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.high-contrast .action-btn,
+body.high-contrast .mode-btn {
+    border: 3px solid #000000;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.high-contrast #analyzeBtn {
+    background-color: #000000;
+    color: #ffffff;
+    border: 3px solid #000000;
+}
+
+body.high-contrast #settingsPanel {
+    border: 3px solid #000000;
+    background-color: #ffffff;
+}
+
+/* ===== ACCESSIBILITY DARK MODE ===== */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode #container {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode #settingsPanel {
+    background-color: #2a2a2a;
+    border-color: #444;
+}
+
+body.dark-mode .mode-btn {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+body.dark-mode .mode-btn.active {
+    background-color: #1a73e8;
+    border-color: #1a73e8;
+}
+
+body.dark-mode #summarySection,
+body.dark-mode #simplifiedSection {
+    background-color: #2a2a2a;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+body.dark-mode #qaSection {
+    background-color: #2a2a2a;
+    border-color: #1a73e8;
+}
+
+body.dark-mode #questionInput {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode label {
+    color: #e0e0e0;
+}
+
+/* ===== DYSLEXIA-FRIENDLY FONT ===== */
+body.dyslexia-font,
+body.dyslexia-font * {
+    font-family: 'OpenDyslexic', 'Arial', sans-serif !important;
+}
+
+/* Import OpenDyslexic font */
+@import url('https://fonts.googleapis.com/css2?family=OpenDyslexic:wght@400;700&display=swap');
+/* ===== FORM ELEMENT STYLES ===== */

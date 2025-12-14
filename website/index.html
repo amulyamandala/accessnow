@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AccessNow – Accessible Browsing for Everyone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card-bg: #11172b;
+      --accent: #4f8cff;
+      --accent-soft: rgba(79, 140, 255, 0.12);
+      --text-main: #f5f7ff;
+      --text-muted: #a9b3d5;
+      --border-subtle: #222842;
+      --bad: #ff6b81;
+      --good: #4cd964;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1b2640, #050814 55%);
+      color: var(--text-main);
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 30% 20%, #ffffff, #4f8cff 40%, #11172b 80%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #050814;
+      font-size: 18px;
+    }
+    .logo-text-title {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+    .logo-text-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+    .hero h1 {
+      font-size: clamp(26px, 3.2vw, 34px);
+      line-height: 1.2;
+      margin: 10px 0 12px;
+    }
+    .hero p {
+      margin: 0 0 16px;
+      color: var(--text-muted);
+      font-size: 14px;
+      max-width: 520px;
+    }
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .btn {
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--accent);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn.secondary {
+      background: transparent;
+      border-color: var(--border-subtle);
+      color: var(--text-main);
+    }
+    .btn span {
+      font-size: 15px;
+    }
+    .hero-mock {
+      border-radius: 16px;
+      background: linear-gradient(145deg, #121a33, #080c1c);
+      padding: 14px 14px 12px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.6);
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+    .mock-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 11px;
+    }
+    .dot-row {
+      display: flex;
+      gap: 4px;
+    }
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #3a425f;
+    }
+    .dot.on { background: var(--accent); }
+    .mock-tagline {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .mock-section {
+      border-radius: 10px;
+      border: 1px solid var(--border-subtle);
+      padding: 8px 10px;
+      margin-bottom: 6px;
+      background: rgba(8, 13, 32, 0.9);
+    }
+    .mock-section h4 {
+      margin: 0 0 4px;
+      font-size: 11px;
+      color: var(--text-main);
+    }
+    .mock-section p {
+      margin: 0;
+      font-size: 11px;
+    }
+    .section {
+      margin-bottom: 32px;
+    }
+    .section h2 {
+      font-size: 18px;
+      margin: 0 0 10px;
+    }
+    .section p {
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .pill {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      background: rgba(8, 13, 32, 0.9);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      padding: 14px 14px 12px;
+      font-size: 13px;
+    }
+    .card h3 {
+      margin: 0 0 6px;
+      font-size: 15px;
+    }
+    .card p {
+      margin: 0 0 6px;
+      color: var(--text-muted);
+    }
+    .card ul {
+      margin: 6px 0 0;
+      padding-left: 16px;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+    .flag {
+      font-size: 11px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      margin-bottom: 4px;
+    }
+    .flag.good {
+      background: rgba(76, 217, 100, 0.12);
+      color: var(--good);
+    }
+    .flag.bad {
+      background: rgba(255, 107, 129, 0.12);
+      color: var(--bad);
+    }
+    footer {
+      margin-top: 32px;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid #171d33;
+      padding-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">
+        <div class="logo-mark">A</div>
+        <div>
+          <div class="logo-text-title">AccessNow</div>
+          <div class="logo-text-sub">Smart accessibility layer for the web</div>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <span>SIH Prototype</span>
+        <span>•</span>
+        <span>Built for low‑vision & dyslexic users</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1>Summarize, read, and visually adapt any webpage in one click.</h1>
+        <p>
+          AccessNow is a Chrome extension that turns long, cluttered pages into
+          concise summaries, reads them aloud, and applies visual themes for low‑vision
+          and dyslexic users – without needing any changes on the website side. [file:295]
+        </p>
+        <div class="hero-cta">
+          <button class="btn">
+            <span>➕</span>
+            <span>Install AccessNow (unpacked)</span>
+          </button>
+          <button class="btn secondary">
+            <span>▶</span>
+            <span>Watch demo walkthrough</span>
+          </button>
+        </div>
+      </div>
+      <div class="hero-mock">
+        <div class="mock-header">
+          <span style="font-size:11px;color:var(--text-muted)">AccessNow popup snapshot</span>
+          <div class="dot-row">
+            <div class="dot on"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="mock-section">
+          <h4>📝 Page summary</h4>
+          <p>Automatically counts words, extracts key sentences, and generates a compact spoken summary.</p>
+        </div>
+        <div class="mock-section">
+          <h4>🔊 Text‑to‑speech</h4>
+          <p>One tap reads the summary aloud; right‑click “Speak selected text” for any paragraph.</p>
+        </div>
+        <div class="mock-section">
+          <h4>🎨 Visual accessibility themes</h4>
+          <p>High‑contrast, dark mode, blue‑yellow dyslexia theme, custom font size, line height, and letter spacing. [file:295]</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>What AccessNow does</h2>
+      <p>
+        The extension adds an accessibility “layer” on top of any website. It does not require
+        the site owner to implement ARIA or redesign their UI, which makes it especially useful
+        for legacy portals, learning platforms, and dense text content. [file:295]
+      </p>
+      <div class="grid">
+        <div class="card">
+          <h3>1. Analyze & simplify pages</h3>
+          <p>AccessNow scans the visible text on the page, counts approximate word length, and extracts the most important sentences into a short summary and a simplified version. [file:295]</p>
+          <ul>
+            <li>Works on articles, blogs, docs, and LMS content.</li>
+            <li>Outputs both summary and simplified text views.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>2. Read aloud with TTS</h3>
+          <p>The extension uses text‑to‑speech to read summaries aloud from the popup, and also exposes a “Speak selected text” option in the right‑click menu. [file:263][file:295]</p>
+          <ul>
+            <li>Good for blind and low‑vision users.</li>
+            <li>Helps users who prefer auditory learning.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>3. Visual accessibility & dyslexia support</h3>
+          <p>Users can apply high‑contrast themes, dark mode, blue‑yellow palettes, dyslexia‑friendly fonts and custom spacing across the current page. [file:295]</p>
+          <ul>
+            <li>Adjust font size, letter spacing and line height.</li>
+            <li>Optionally enable an OpenDyslexic‑style font across content.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Who this extension helps</h2>
+      <p>
+        AccessNow is designed to support multiple accessibility profiles at the same time,
+        instead of building separate tools for each group. [file:295]
+      </p>
+      <div class="grid">
+        <div class="card">
+          <span class="flag good">Primary</span>
+          <h3>Blind & low‑vision users</h3>
+          <ul>
+            <li>Full page summaries read aloud reduce navigation effort.</li>
+            <li>“Speak selected text” gives quick access to any paragraph without exploring the entire DOM. [file:263]</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="flag good">Primary</span>
+          <h3>Users with dyslexia or reading fatigue</h3>
+          <ul>
+            <li>Dyslexia‑friendly color themes and fonts reduce visual stress. [file:295]</li>
+            <li>Increased spacing and simplified text make dense pages more approachable.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="flag">Secondary</span>
+          <h3>Students & heavy readers</h3>
+          <ul>
+            <li>Quick summaries before deep reading save time for research and exam prep.</li>
+            <li>Listening to content while skimming the page supports revision or multitasking.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="flag">Secondary</span>
+          <h3>Non‑native language learners</h3>
+          <ul>
+            <li>Simplified text helps reduce complex sentence structures into clearer language. [file:295]</li>
+            <li>Listening to the page improves pronunciation and listening comprehension.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Why this approach is useful</h2>
+      <div class="grid">
+        <div class="card">
+          <span class="flag bad">Problem</span>
+          <h3>Most sites are not fully accessible</h3>
+          <p>
+            Many educational and government websites still lack proper ARIA, keyboard navigation,
+            and font/contrast controls, especially in legacy systems. Users are forced to fight
+            with each individual interface. [file:295]
+          </p>
+        </div>
+        <div class="card">
+          <span class="flag good">AccessNow’s approach</span>
+          <h3>Browser‑level “accessibility layer”</h3>
+          <p>
+            Instead of waiting for each website to improve, AccessNow applies reading assistance,
+            text‑to‑speech and visual styles from the browser itself. One tool, consistent behaviour,
+            works across almost all pages. [file:272][file:291]
+          </p>
+        </div>
+        <div class="card">
+          <span class="flag good">Benefits for institutions</span>
+          <h3>Fast to pilot, easy to scale</h3>
+          <ul>
+            <li>No backend changes to existing portals.</li>
+            <li>Can be rolled out as a recommended browser extension in labs or for specific students.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>How to use the extension (for demo)</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>1. Install in Chrome</h3>
+          <ul>
+            <li>Go to <code>chrome://extensions</code>.</li>
+            <li>Enable Developer Mode → “Load unpacked”.</li>
+            <li>Select the AccessNow extension folder (with manifest.json).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>2. Summarize & read a page</h3>
+          <ul>
+            <li>Open an article (e.g., Wikipedia).</li>
+            <li>Click the AccessNow icon → “Analyze This Page”.</li>
+            <li>Review the summary/simplified text, then click “Read Aloud”.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>3. Speak any selected text</h3>
+          <ul>
+            <li>Select a paragraph on the page.</li>
+            <li>Right‑click → “🔊 Speak selected text”.</li>
+            <li>The built‑in TTS API reads that selection aloud. [file:263]</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>4. Apply visual themes</h3>
+          <ul>
+            <li>In the popup, choose a color theme and font settings.</li>
+            <li>Click “Apply to Page” to overlay accessibility styles. [file:295]</li>
+            <li>Use this live in the demo to show the difference for dyslexic and low‑vision users.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>Built by a student team as part of an accessibility‑focused project.</div>
+      <div>Extension logic: browser text extraction, Web Speech API, Chrome TTS, and CSS-based accessibility overlays. [file:263][file:295]</div>
+    </footer>
+  </div>
+</body>
+</html>

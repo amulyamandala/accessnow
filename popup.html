@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AccessNow</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body class="visual-mode">
+  <div id="container">
+    <!-- ACCESSIBILITY SETTINGS -->
+    <div id="settingsPanel">
+      <h3>🎨 Accessibility Settings</h3>
+
+      <div class="setting-block">
+        <label for="themeSelect">Color Theme</label>
+        <select id="themeSelect">
+          <option value="default">High Contrast (Black/White)</option>
+          <option value="dark">Dark Mode</option>
+          <option value="blue-yellow">Blue & Yellow (Dyslexia)</option>
+          <option value="yellow-blue">Yellow & Blue (Inverted)</option>
+          <option value="gray">Grayscale</option>
+        </select>
+      </div>
+
+      <div class="setting-block">
+        <label for="fontSizeSlider">Font Size</label>
+        <input type="range" id="fontSizeSlider" min="12" max="24" value="16" />
+        <span id="fontSizeLabel" class="setting-label">16px</span>
+      </div>
+
+      <div class="setting-block">
+        <label class="inline">
+          <input type="checkbox" id="dyslexiaFont" />
+          <span>🔤 Dyslexia‑friendly font</span>
+        </label>
+      </div>
+
+      <div class="setting-block">
+        <label for="letterSpacing">Letter Spacing</label>
+        <input type="range" id="letterSpacing" min="0" max="0.2" step="0.02" value="0" />
+        <span id="letterSpacingLabel" class="setting-label">Normal</span>
+      </div>
+
+      <div class="setting-block">
+        <label for="lineHeight">Line Height</label>
+        <input type="range" id="lineHeight" min="1" max="2.5" step="0.1" value="1.5" />
+        <span id="lineHeightLabel" class="setting-label">1.5x</span>
+      </div>
+
+      <button id="applyAccessibilityBtn" class="action-btn primary">
+        ✓ Apply to Page
+      </button>
+    </div>
+
+    <!-- MODE TOGGLE + CORE ACTIONS -->
+    <div id="mode-toggle">
+      <button id="visualMode" class="mode-btn active">👁️ Visual Mode</button>
+      <button id="readingMode" class="mode-btn">📖 Reading Mode</button>
+    </div>
+
+    <button id="analyzeBtn" class="action-btn primary">📊 Analyze This Page</button>
+    <button id="readAloudBtn" class="action-btn secondary">🔊 Read Aloud</button>
+
+    <!-- READING STATUS -->
+    <div id="readingStatus" class="hidden">
+      <span id="statusText"></span>
+    </div>
+
+    <!-- SUMMARY + SIMPLIFIED -->
+   
+    <!-- SUMMARY + SIMPLIFIED -->
+<div id="results" class="hidden">
+  <div id="summarySection" class="section">
+    <h2>📝 Summary</h2>
+    <div id="summaryContent"></div>
+    <button id="readSummaryBtn" class="secondary-btn">Read summary aloud</button>
+  </div>
+
+  <div id="simplifiedSection" class="section">
+    <h2>✏️ Simplified Version</h2>
+    <div id="simplifiedContent"></div>
+    <button id="readSimplifiedBtn" class="secondary-btn">Read simplified aloud</button>
+  </div>
+</div>
+
+<!-- Q&A -->
+<div id="qaSection" class="hidden">
+  <h3>❓ Ask a Question</h3>
+  <input type="text" id="questionInput" placeholder="Ask about this page..." />
+  <button id="askBtn" class="action-btn secondary">Ask</button>
+  <div id="answerContent" class="hidden"></div>
+</div>
+
+<!-- Master ON/OFF -->
+<div class="setting-block">
+  <label for="extensionEnabled" class="inline">
+    <input type="checkbox" id="extensionEnabled" />
+    <span>Enable AccessNow on this page</span>
+  </label>
+</div>
+
+
+  <script src="popup.js"></script>
+</body>
+</html>
